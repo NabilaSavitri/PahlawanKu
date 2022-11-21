@@ -1,5 +1,6 @@
 package com.si5a.pahlawanku;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,24 @@ public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ClassViewHolde
                 .load(pahlawan.getFoto())
                 .centerCrop()
                 .into(holder.ivFoto);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String xNama, xTentang, xFoto;
+
+                xNama = pahlawan.getNama();
+                xFoto = pahlawan.getFoto();
+                xTentang = pahlawan.getTentang();
+
+                Intent kirim = new Intent(holder.itemView.getContext(), DetailActivity.class);
+                kirim.putExtra("xNama", xNama);
+                kirim.putExtra("xTentang", xTentang);
+                kirim.putExtra("xFoto", xFoto);
+                holder.itemView.getContext().startActivities(kirim);
+
+
+            }
+        });
     }
 
     @Override
