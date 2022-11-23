@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,14 +17,14 @@ public class AdapterGrid extends RecyclerView.Adapter<AdapterGrid.ClassViewHolde
     private ArrayList<ModelPahlawan> dataPahlawan;
 
 
-    public AdapterGrid(ArrayList<ModelPahlawan> dataPahlawan) {
+    public AdapterGrid(ArrayList<ModelPahlawan> dataPahlawan, MainActivity mainActivity) {
         this.dataPahlawan = dataPahlawan;
     }
 
     @NonNull
     @Override
     public ClassViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View varView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card, parent, false);
+        View varView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_grid, parent, false);
         return new ClassViewHolder(varView);
     }
 
@@ -38,7 +37,7 @@ public class AdapterGrid extends RecyclerView.Adapter<AdapterGrid.ClassViewHolde
                 .load(pahlawan.getFoto())
                 .centerCrop()
                 .into(holder.ivGrid);
-        
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
